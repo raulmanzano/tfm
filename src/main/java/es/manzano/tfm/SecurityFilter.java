@@ -9,9 +9,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
 import es.manzano.tfm.exceptions.FilterException;
 import es.manzano.tfm.filters.OneSessionFilter;
 import es.manzano.tfm.filters.PreviousAllowedFilter;
@@ -46,8 +43,8 @@ public class SecurityFilter {
 		 SecurityFilter.infoDAO.reset();
 	 }
 	 
-	public static void filter(String sessionId, String userId, String previous, String current, String tokenprevious, String tokencurrent) throws FilterException {
-		Info currentInfo = new Info(sessionId, userId, previous, current, tokenprevious, tokencurrent);
+	public static void filter(String sessionId, String userId,String addr, String previous, String current, String tokenprevious, String tokencurrent) throws FilterException {
+		Info currentInfo = new Info(sessionId, userId,addr, previous, current, tokenprevious, tokencurrent);
 		Info previousInfo = infoDAO.get(currentInfo.getSessionId());
 		
 		if (previousInfo != null) {
@@ -65,7 +62,7 @@ public class SecurityFilter {
 	}
 	
 	
-	public static void doFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public static void doFilter(HttpServletRequest request, HttpServletResponse response,boolean csfrToken) throws Exception {
 		//debe de existir una cookie con el usuario una vez que se haya validado
 		//debe de enviarse el CRSF como un parametro
 			//el valor esta en la request como un atributo
@@ -77,20 +74,25 @@ public class SecurityFilter {
 		for(Cookie cookie : cookies){
 			if 	(cookie.getName().equalsIgnoreCase("usuario")) userId=cookie.getValue(); 
 		}
-		//logger.debug("userId " + userId);
+		if (userId==null || userId.trim().equalsIgnoreCase("")) userId=SecurityFilter.NO_USER;
 		
-		String previous=request.getHeader("referer");
+		//logger.debug("userId " + userId);
+		String addr = request.getRemoteAddr();
+		String previous=Util.extractPageNameFromURLString(request.getHeader("referer"));
 		//logger.debug("referer " + previous);
-		String current=request.getRequestURI();
+		String current=Util.extractPageNameFromURLString(request.getRequestURI());
 		//logger.debug("current " + current);
 		String tokenprevious= request.getParameter("token");
 		//logger.debug("tokenprevious " + tokenprevious);
-		String token = String.valueOf(100000 + new Random().nextFloat() * 900000);
+		String tokencurrent=null;
+		if (csfrToken)
+		{String token = String.valueOf(100000 + new Random().nextFloat() * 900000);
 		request.setAttribute("token",(String)token);
-		String tokencurrent=token;			
+		tokencurrent=token;
+		}
 		//logger.debug("tokencurrent " + tokencurrent);
 	
-		Info currentInfo = new Info(sessionId, userId, previous, current, tokenprevious, tokencurrent);
+		Info currentInfo = new Info(sessionId, userId, addr, previous, current, tokenprevious, tokencurrent);
 		Info previousInfo = infoDAO.get(currentInfo.getSessionId());
 		
 		//logger.info("previousInfo " + previousInfo);
@@ -109,14 +111,39 @@ public class SecurityFilter {
 			}catch (Exception e) {
 				//logger.info(e);
 				System.out.println(e);
-			} finally {
 				infoDAO.reset(currentInfo);
+				infoDAO.set(currentInfo);
 				response.sendRedirect("logout.jsp");
-			}
-		}
+				return;
+		}}
 		infoDAO.set(currentInfo);
 	}
- 
+		
+	
+	public static void doFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		doFilter(request,response,false);
+	}
+	
+	
+	public static void doFilterLoginSuccess(HttpServletRequest request, HttpServletResponse response,boolean csfrToken) throws Exception {
+		Cookie cookie = new Cookie("usuario",request.getParameter("usuario"));
+		cookie.setMaxAge(-1);
+		response.addCookie(cookie);
+		doFilter(request,response,csfrToken);
+	}
+	
+	
+	public static void doFilterLogout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.getSession().invalidate();
+		Cookie cookie = new Cookie("usuario",null);
+		//Cookie cookie = new Cookie("usuario",SecurityFilter.NO_USER;);
+		cookie.setMaxAge(-1);
+		response.addCookie(cookie);
+	}
+	
+	
+
+	
 	
 	
 

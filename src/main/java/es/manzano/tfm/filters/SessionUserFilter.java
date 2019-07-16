@@ -13,7 +13,9 @@ public class SessionUserFilter  implements Filter {
 			
 		if (!current.getSessionId().equalsIgnoreCase(previous.getSessionId())) throw new SessionUserFilterException("SessionId diferentes");
 		if (previous.getUserId()!=SecurityFilter.NO_USER)
-			if (!current.getUserId().equalsIgnoreCase(previous.getUserId())) throw new SessionUserFilterException("UserId diferentes");		
+			if (!current.getUserId().equalsIgnoreCase(previous.getUserId())) throw new SessionUserFilterException("UserId diferentes");
+		if (!current.getAddr().equalsIgnoreCase(previous.getAddr())) throw new SessionUserFilterException("Addr diferentes");
+		
 	}
 
 }
