@@ -4,11 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import es.manzano.tfm.Info;
 import es.manzano.tfm.exceptions.FilterException;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SessionUserFilterTests {
 
 	@BeforeClass
@@ -23,8 +25,8 @@ public class SessionUserFilterTests {
 
 	@Test
 	public void testSesionDiferente() {
-		Info info1 = new Info("sessionId1","userId1","source1","target1","tokenSource1","tokenTarget1");
-		Info info2 = new Info("sessionId2","userId2","source2","target2","tokenSource2","tokenTarget2");
+		Info info1 = new Info("sessionId1","userId1","addr","source1","target1","tokenSource1","tokenTarget1");
+		Info info2 = new Info("sessionId2","userId2","addr","source2","target2","tokenSource2","tokenTarget2");
 		try {
 			new SessionUserFilter().filter(info2,info1);
 		} catch (FilterException e) {
@@ -34,8 +36,8 @@ public class SessionUserFilterTests {
 
 	@Test
 	public void testUserIdDiferente() {
-		Info info1 = new Info("sessionId1","userId1","source1","target1","tokenSource1","tokenTarget1");
-		Info info12 = new Info("sessionId1","userId2","source2","target2","tokenSource2","tokenTarget2");
+		Info info1 = new Info("sessionId1","userId1","addr","source1","target1","tokenSource1","tokenTarget1");
+		Info info12 = new Info("sessionId1","userId2","addr","source2","target2","tokenSource2","tokenTarget2");
 		try {
 			new SessionUserFilter().filter(info12,info1);
 		} catch (FilterException e) {

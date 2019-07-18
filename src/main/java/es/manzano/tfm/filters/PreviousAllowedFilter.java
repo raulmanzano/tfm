@@ -15,6 +15,7 @@ public class PreviousAllowedFilter {
 		this.graph.add("login"+"login");
 		this.graph.add("login"+"pagina1");
 		this.graph.add("pagina1"+"pagina2");
+		this.graph.add("pagina2"+"pagina2");
 		this.graph.add("pagina1"+"logout");
 		this.graph.add("pagina2"+"pagina3");
 		this.graph.add("pagina2"+"logout");

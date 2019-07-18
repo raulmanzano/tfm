@@ -4,11 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import es.manzano.tfm.Info;
 import es.manzano.tfm.exceptions.FilterException;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PreviousCurrentFilterTest {
 
 	@BeforeClass
@@ -21,8 +23,8 @@ public class PreviousCurrentFilterTest {
 
 	@Test
 	public void testTrue() {
-		Info infoPrevious = new Info("sessionId","userId","source","target","tokenSource","tokenTarget");
-		Info infoCurrent = new Info("sessionId","userId","target","target2","tokenSource","tokenTarget");
+		Info infoPrevious = new Info("sessionId","userId","addr","source","target","tokenSource","tokenTarget");
+		Info infoCurrent = new Info("sessionId","userId","addr","target","target2","tokenSource","tokenTarget");
 		
 		try {
 			new PreviousCurrentFilter().filter(infoPrevious,infoCurrent);
@@ -33,8 +35,8 @@ public class PreviousCurrentFilterTest {
 
 	@Test
 	public void testFalse() {
-		Info infoPrevious = new Info("sessionId","userId","source","targetOther","tokenSource","tokenTarget");
-		Info infoCurrent = new Info("sessionId","userId","target","target2","tokenSource","tokenTarget");
+		Info infoPrevious = new Info("sessionId","userId","addr","source","targetOther","tokenSource","tokenTarget");
+		Info infoCurrent = new Info("sessionId","userId","addr","target","target2","tokenSource","tokenTarget");
 		
 		try {
 			new PreviousCurrentFilter().filter(infoPrevious,infoCurrent);
