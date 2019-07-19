@@ -10,5 +10,5 @@ public class SourceTargetFilterException extends FilterException {
 	public SourceTargetFilterException(String message) {
 		super(message);
 	}
-	
+
 }

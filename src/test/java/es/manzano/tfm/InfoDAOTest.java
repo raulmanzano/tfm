@@ -10,6 +10,10 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+/**
+ * @author manzano
+ *
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class InfoDAOTest {
 	

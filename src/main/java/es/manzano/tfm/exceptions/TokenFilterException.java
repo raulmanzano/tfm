@@ -10,5 +10,5 @@ public class TokenFilterException extends FilterException {
 	public TokenFilterException(String message) {
 		super(message);
 	}
-	
+
 }

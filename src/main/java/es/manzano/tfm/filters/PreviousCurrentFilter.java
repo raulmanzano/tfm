@@ -7,10 +7,10 @@ import es.manzano.tfm.exceptions.SourceTargetFilterException;
 public class PreviousCurrentFilter implements Filter {
 
 	public void filter(Info previous, Info current) throws FilterException {
-		
-		if (!current.getPrevious().equalsIgnoreCase(previous.getCurrent())) throw new SourceTargetFilterException("Previous diferente");
-		
-	}
 
+		if (!current.getPrevious().equalsIgnoreCase(previous.getCurrent()))
+			throw new SourceTargetFilterException("Previous diferente");
+
+	}
 
 }

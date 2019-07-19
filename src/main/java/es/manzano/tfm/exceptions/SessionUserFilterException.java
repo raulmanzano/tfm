@@ -1,7 +1,7 @@
 package es.manzano.tfm.exceptions;
 
 public class SessionUserFilterException extends FilterException {
-	
+
 	/**
 	 * 
 	 */
