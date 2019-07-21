@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.manzano.tfm.exceptions.FilterException;
-import es.manzano.tfm.filters.Filter;
 import es.manzano.tfm.filters.OneSessionFilter;
 import es.manzano.tfm.filters.PreviousAllowedFilter;
 import es.manzano.tfm.filters.PreviousCurrentFilter;
