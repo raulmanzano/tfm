@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.*,es.manzano.tfm.*" %>
 <%
+//pagina generica sin uso del token CSRF
 System.out.println("pagina2");
 SecurityFilter.doFilter(request,response);
  %>
