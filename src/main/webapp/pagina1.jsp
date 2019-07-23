@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.*,es.manzano.tfm.*" %>
 <%
+
+
+//pagina estandar que presenta los enlaces como formularios para uso de paso de token CSFR
 System.out.println("Pagina1");
 SecurityFilter.doFilter(request,response,true);
  %>
