@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="es.manzano.tfm.exceptions.SessionUserFilterException" project="tfm" 
+    file="/tfm/src/main/java/es/manzano/tfm/exceptions/SessionUserFilterException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="192" x="124" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="es.manzano.tfm.exceptions.FilterException" project="tfm" 
+    file="/tfm/src/main/java/es/manzano/tfm/exceptions/FilterException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="132" x="593" y="-89"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="es.manzano.tfm.exceptions.SourceTargetFilterException" project="tfm" 
+    file="/tfm/src/main/java/es/manzano/tfm/exceptions/SourceTargetFilterException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="197" x="356" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="es.manzano.tfm.exceptions.TokenFilterException" project="tfm" 
+    file="/tfm/src/main/java/es/manzano/tfm/exceptions/TokenFilterException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="161" x="593" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="es.manzano.tfm.exceptions.OneSessionFilterException" project="tfm" 
+    file="/tfm/src/main/java/es/manzano/tfm/exceptions/OneSessionFilterException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="189" x="794" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="es.manzano.tfm.exceptions.PreviousAllowedFilterException" project="tfm" 
+    file="/tfm/src/main/java/es/manzano/tfm/exceptions/PreviousAllowedFilterException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="210" x="1023" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="7">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="10">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
